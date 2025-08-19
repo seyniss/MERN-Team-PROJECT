@@ -8,6 +8,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const todoRoutes= require('./routes/todoRoutes')
+app.use("/api/todos",todoRoutes)
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Mongodb연결 성공"))
