@@ -22,7 +22,7 @@ mongoose
 
 
 const bucketRoutes = require('./routes/bucketRoutes')
-app.use('/api/bucket',bucketRoutes)
+app.use('/api/buckets',bucketRoutes)
 
 
 
