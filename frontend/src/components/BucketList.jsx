@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from 'react'
 import './BucketList.css'
 import BucketItem from './BucketItem'
+import { Routes, Route } from "react-router-dom"
+import About from '../pages/About'
 
 const BucketList = () => {
 
@@ -9,9 +11,12 @@ const BucketList = () => {
       <h4>Todo List ☑️</h4>
       <input type="text" placeholder='검색어 입력' />
       <div className="todos-wrapper">
-        <BucketItem />
-        <BucketItem />
-        <BucketItem />
+        <Routes>
+          <BucketItem />
+          <Route path='../pages/About' element={<About />} />
+          <BucketItem />
+          <BucketItem />
+        </Routes>
       </div>
     </div>
   )
