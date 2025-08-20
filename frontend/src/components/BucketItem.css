@@ -1,0 +1,27 @@
+.BucketItem {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+}
+
+.BucketItem .content {
+    flex: 1;
+}
+
+.btn-wrap {
+    display: flex;
+    gap: 5px;
+
+}
+
+.BucketItem button {
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(240, 248, 255, 0);
+    
+}
