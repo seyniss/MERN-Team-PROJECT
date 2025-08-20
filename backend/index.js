@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const todoRoutes= require('./routes/todoRoutes')
+const todoRoutes= require('./routes/todo')
 app.use("/api/todos",todoRoutes)
 
 mongoose
