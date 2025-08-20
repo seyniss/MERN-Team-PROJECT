@@ -4,4 +4,12 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-image: url(./assets/background.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+body {
+  background-color: antiquewhite;
 }
