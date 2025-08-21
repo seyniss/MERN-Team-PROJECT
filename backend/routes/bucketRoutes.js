@@ -15,7 +15,7 @@ const ensureObjectId = (id, res) => {
 // 생성: req.body 그대로 사용
 router.post("/", async (req, res) => {
   try {
-    const newBucket = new Bucket(req.body); // ← 팀 방식 유지
+    const newBucket = new Bucket(req.body); // 모델 = body 입력
     const saved = await newBucket.save();   // 스키마 검증 + pre('save') 적용
     res.status(201).json(saved);
   } catch (error) {
@@ -30,8 +30,7 @@ router.get("/", async (req, res) => {
     const isLite = req.query.lite === "true";
     const projection = isLite ? "title isCompleted" : ""; // lite면 필요한 필드만
     const buckets = await Bucket.find({}, projection)
-      .sort({ createdAt: -1 })
-      .lean();
+      .sort({ createdAt: -1 });
     res.status(200).json(buckets);
   } catch (e) {
     console.error(e);

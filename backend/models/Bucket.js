@@ -8,7 +8,7 @@ const bucketSchema = new mongoose.Schema(
     date: { type: Date, default: Date.now },
 
     text: { type: String, required: true, trim: true, maxlength: 400 },
-    img: { type: String, required: true, trim: true },
+    img: { type: String, trim: true },
 
     category: {
       type: String,
