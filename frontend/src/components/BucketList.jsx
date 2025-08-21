@@ -10,9 +10,8 @@ const BucketList = ({ buckets }) => {
       <input type="text" placeholder='검색어 입력' />
       <div className="todos-wrapper">
         {buckets.map((bucket, i) => (
-          <BucketItem key={i} bucke={buckets} />
+          <BucketItem key={i} bucket={bucket} />
         ))}
-        <Link to="/about">about</Link>
       </div>
     </div>
   )

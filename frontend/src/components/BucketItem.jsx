@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import './BucketItem.css'
+import { Link } from 'react-router-dom'
 
-const BucketItem = () => {
+const BucketItem = ({ bucket }) => {
 
   return (
     <div className='BucketItem'>
       <div className="content">
-        <p>버킷리스트 / 카테고리 / 체크박스</p>
+        <div>
+          <Link to="/about" className="title">{bucket.title}</Link>
+        </div>
+        <input type="checkbox" className="check" />
         <div className="btn-wrap">
           <button>수정</button>
           <button>삭제</button>

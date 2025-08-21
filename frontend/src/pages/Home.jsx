@@ -4,12 +4,12 @@ import Header from '../components/Header'
 import BucketList from '../components/BucketList'
 import BucketEditor from '../components/BucketEditor'
 
-const Home = () => {
+const Home = ({ buckets }) => {
     return (
         <div>
             <Header />
             <BucketEditor />
-            <BucketList />
+            <BucketList buckets={buckets} />
         </div>
     )
 }

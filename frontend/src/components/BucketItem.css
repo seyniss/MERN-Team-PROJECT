@@ -1,5 +1,4 @@
 .BucketItem {
-    display: flex;
     gap: 20px;
     padding: 10px 0;
     border-bottom: 1px solid lightgray;
@@ -8,12 +7,33 @@
 
 .BucketItem .content {
     flex: 1;
+    display: flex;
+    gap: 20px;
+}
+
+.BucketItem .content .title {
+    justify-content: flex-start;
 }
 
 .btn-wrap {
     display: flex;
     gap: 5px;
+    justify-content: flex-end;
+}
 
+.check {
+    cursor: pointer;
+}
+
+.title {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.title:hover {
+    text-decoration: underline;
+    color: mediumblue;
 }
 
 .BucketItem button {
@@ -22,6 +42,5 @@
     border: 1px solid lightgrey;
     border-radius: 5px;
     padding: 5px;
-    background-color: rgba(240, 248, 255, 0);
-    
+    background-color: rgba(0, 0, 0, 0);
 }

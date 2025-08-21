@@ -26,8 +26,8 @@ function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/list" element={<BucketList buckets={buckets} />}  />
+        <Route path="/" element={<Home buckets={buckets} />} />
+        <Route path="/list" element={<BucketList />}  />
         <Route path='/About' element={<About />} />
       </Routes>
     </div>
