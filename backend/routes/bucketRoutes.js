@@ -27,11 +27,9 @@ router.post("/", async (req, res) => {
 // 전체 조회
 router.get("/", async (req, res) => {
   try {
-    const isLite = req.query.lite === "true";
-    const projection = isLite ? "title isCompleted" : ""; // lite면 필요한 필드만
-    const buckets = await Bucket.find({}, projection)
-      .sort({ createdAt: -1 });
-    res.status(200).json(buckets);
+    const buckets = await Bucket.find().sort({createdAt:-1})
+
+    res.status(201).json(buckets)
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: "데이터를 불러오지 못했습니다." });
@@ -41,7 +39,8 @@ router.get("/", async (req, res) => {
 // 단일 조회
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  if (!ensureObjectId(id, res)) return;
+  if (!ensureObjectId(id, res)) 
+    return res.status(400).json({message:'유효하지 않은 ID입니다.'});
 
   try {
     const bucket = await Bucket.findById(id);
@@ -56,12 +55,13 @@ router.get("/:id", async (req, res) => {
 // 전체 수정 
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  if (!ensureObjectId(id, res)) return;
+  if (!ensureObjectId(id, res)) 
+    return res.status(400).json({message:'유효하지 않은 ID입니다.'});
 
   try {
     const updated = await Bucket.findByIdAndUpdate(id, req.body, {
       new: true,
-      runValidators: true,   // ← 반드시
+      runValidators: true,   // 유효성 검사
     });
     if (!updated) return res.status(404).json({ message: "해당 ID의 bucket이 없습니다." });
     res.status(200).json(updated);
@@ -74,7 +74,8 @@ router.put("/:id", async (req, res) => {
 // 부분 수정 (
 router.patch("/:id", async (req, res) => {
   const { id } = req.params;
-  if (!ensureObjectId(id, res)) return;
+  if (!ensureObjectId(id, res)) 
+    return res.status(400).json({message:'유효하지 않은 ID입니다.'});
 
   try {
     const updated = await Bucket.findByIdAndUpdate(id, req.body, {
@@ -93,7 +94,8 @@ router.patch("/:id", async (req, res) => {
 // 삭제
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  if (!ensureObjectId(id, res)) return;
+  if (!ensureObjectId(id, res)) 
+    return res.status(400).json({message:'유효하지 않은 ID입니다.'});
 
   try {
     const deleted = await Bucket.findByIdAndDelete(id);
