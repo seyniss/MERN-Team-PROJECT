@@ -1,8 +1,11 @@
 header h1 {
     color: darkslateblue;
+    align-self: center;
 }
 
 header {
+    display: flex;
+    flex-direction: column;
     margin-top: 50px;
     padding: 15px;
 }

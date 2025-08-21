@@ -13,7 +13,7 @@ const BucketList = () => {
         <BucketItem />
         <BucketItem />
         <BucketItem />
-        <Link to="/about"></Link>
+        <Link to="/about">about</Link>
       </div>
     </div>
   )
