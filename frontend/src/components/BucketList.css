@@ -11,7 +11,7 @@
 
 .TodoList>input {
     flex: 1;
-  border: none;
+  border: 2px solid #fff;
   padding: 10px 15px;
   font-size: 16px;
   border-radius: 25px 25px; /* 왼쪽 둥글게 */
