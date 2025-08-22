@@ -5,6 +5,8 @@ import About from './pages/About'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import BucketList from './components/BucketList'
+import Editor from './pages/Editor'
+import New from './pages/New'
 
 function App() {
   const API = `${import.meta.env.VITE_API_URL}/api/buckets`
@@ -23,12 +25,28 @@ function App() {
     bucketLoad()
   }, [])
 
+  const createBucket = async (title) => {
+    if (!title.trim()) return
+    try {
+      const res = await axios.post(API, { title: title.trim() })
+      const created = res.data?.bucket ?? res.data
+      if (Array.isArray(res.data?.buckets)) {
+        setBuckets(res.data.buckets)
+      } else {
+        setBuckets(p => [created, ...p])
+      }
+    } catch (error) {
+      console.log('실패', error)
+    }
+  }
+
   return (
     <div className='App'>
       <Routes>
         <Route path="/" element={<Home buckets={buckets} />} />
-        <Route path="/list" element={<BucketList />}  />
-        <Route path='/About' element={<About />} />
+        <Route path="/list" element={<BucketList />} />
+        <Route path='/About/:id' element={<About buckets={buckets} />} />
+        <Route path='/new' element={<New />} createBucket={createBucket} />
       </Routes>
     </div>
   )
