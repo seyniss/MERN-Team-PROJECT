@@ -5,7 +5,6 @@ const BucketEditor = () => {
   
   return (
     <form className='TodoEditor'>
-      <input type="text" placeholder='new Todo' />
       <button type='submit' >추가</button>
     </form>
   )

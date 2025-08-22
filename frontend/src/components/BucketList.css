@@ -4,10 +4,22 @@
     gap: 20px;
 }
 
+.TodoList h4{
+    margin-bottom: 1px;
+    color : #fff;
+}
+
 .TodoList>input {
-    border: none;
-    border-bottom: 1px solid lightgray;
-    padding: 15px 0;
+    flex: 1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 25px 25px; /* 왼쪽 둥글게 */
+  outline: none;
+  background-color: #d4d0cf6d;
+}
+.TodoList>input:hover {
+background-color : #fff; /* 호버 시 색 변경 */
 }
 
 .TodoList>input:focus {
