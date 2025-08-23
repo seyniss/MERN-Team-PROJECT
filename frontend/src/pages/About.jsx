@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Header from '../components/Header'
+import Back from '../components/Back'
 
 const About = ({ buckets, toggleBucket, deleteBucket }) => {
   const nav = useNavigate()
@@ -12,6 +13,7 @@ const About = ({ buckets, toggleBucket, deleteBucket }) => {
   return (
     <div>
       <Header title="버킷 상세 정보" />
+      <Back />
       <h4>{current.title}</h4>
       <p>내용: {current.text}</p>
       <p>시작일: {new Date(current.startDate).toLocaleDateString()}</p>
