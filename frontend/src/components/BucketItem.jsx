@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import './BucketItem.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-const BucketItem = ({ bucket }) => {
-
+const BucketItem = ({ bucket, deleteBucket, toggleBucket }) => {
+  const nav = useNavigate()
   return (
     <div className='BucketItem'>
       <div className="content">
         <div>
           <Link to={`/about/${bucket._id}`} className="title">{bucket.title}</Link>
         </div>
-        <input type="checkbox" className="check" />
+        <input type="checkbox" className="check" checked={bucket.isCompleted} onChange={() => toggleBucket(bucket._id, !bucket.isCompleted)} />
         <div className="btn-wrap">
-          <button>수정</button>
-          <button>삭제</button>
+          <Link to={`/edit/${bucket._id}`}>
+            <button>수정</button>
+          </Link>
+          <button onClick={() => deleteBucket(bucket._id)}>삭제</button>
         </div>
       </div>
     </div>

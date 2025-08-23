@@ -1,32 +1,28 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import Header from '../components/Header'
 
-const About = ({ buckets }) => {
-  const { id } = useParams()
+const About = ({ buckets, toggleBucket, deleteBucket }) => {
+  const nav = useNavigate()
+  const { id } = useParams();
   const current = buckets.find(i => String(i._id) === id)
   if (!current) {
-    return console.log('존재하지 않는 페이지')
-  }
-  const stringDate = (dates) => {
-    let year = dates.getFullYear()
-    let month = dates.getMonth() + 1
-    let date = dates.getDate()
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (date < 10) {
-      date = `0${date}`;
-    }
-    return `${year}-${month}-${date}`
+    return <div>존재하지 않는 페이지입니다.</div>
   }
   return (
     <div>
+      <Header title="버킷 상세 정보" />
       <h4>{current.title}</h4>
-      <div>
-        <input type="date" value={stringDate(new Date(current.date))} disabled />
-        <p>{current.text}</p>
-      </div>
-    </div>
+      <p>내용: {current.text}</p>
+      <p>시작일: {new Date(current.startDate).toLocaleDateString()}</p>
+      <p>종료일: {new Date(current.endDate).toLocaleDateString()}</p>
+      <p>종료일: {new Date(current.endDate).toLocaleDateString()}</p>
+      <p>{current.img}</p>
+      <p>{current.category}</p>
+      <input type="checkbox" className="check" checked={current.isCompleted} onChange={() => toggleBucket(current._id, !current.isCompleted)} />
+      <Link to={`/edit/${current._id}`}>수정</Link>
+      <button onClick={() => { deleteBucket(current._id); nav(-1) }}>삭제</button>
+    </div >
   )
 }
 

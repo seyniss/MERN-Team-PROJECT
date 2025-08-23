@@ -1,26 +1,20 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import Editor from '../components/Editor'
+import Header from '../components/Header'
 
 const New = ({ createBucket }) => {
   const nav = useNavigate()
-  const [title, setTitle] = useState([])
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!title.trim()) {
-      alert("내용을 입력해주세요.")
-      return
-    }
-    createBucket(title.trim())
+
+  const handleSubmit = (data) => {
+    createBucket(data)
     nav('/', { replace: true })
   }
+
   return (
     <div>
-      <form className='TodoEditor' onSubmit={handleSubmit}>
-        <input type="text" placeholder='새로운 버킷을 입력하세요' value={title} onChange={(e) => setTitle(e.target.value)} />
-        <button type="button" onClick={() => nav(-1)}>{'<'}</button>
-        <button type='submit' disabled={!title.trim()}>추가</button>
-      </form>
+      <Header title="새 버킷 작성" />
+      <Editor onSubmit={handleSubmit} />
     </div>
   )
 }
