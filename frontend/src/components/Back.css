@@ -1,0 +1,19 @@
+.back-btn {
+  display: block;
+  width: 200px;            /* 버튼 폭 */
+  padding: 10px 20px;
+  background: #ff6600;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: none;        /* 그림자 제거 */
+  margin: 0 auto;          /* 부모 안에서 가운데 정렬 */
+  transition: all 0.3s;
+}
+
+.back-btn:hover {
+  background: #e05500;     /* 호버 시 색 변경 */
+  transform: translateY(-2px);
+}

@@ -1,22 +1,77 @@
-.TodoEditor {
-    display: flex;
-    gap: 10px;
+/* 전체 폼 */
+.Editor {
+  max-width: 600px;         /* 가로 폭 제한 */
+  margin: 40px auto;        /* 화면 가운데 정렬 */
+  padding: 20px;
+  background: #fff8f0;      /* 연한 배경 */
+  border: 2px solid #ff6600;
+  border-radius: 12px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Roboto', sans-serif;
 }
 
-.TodoEditor input{
-    flex: 1;
-    padding: 15px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
+/* 입력 그룹 */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 }
 
-.TodoEditor button {
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    width: 80px;
-    background-color: slateblue;
-    font-size: 17px;
-    font-weight: 700;
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #ff6600;
+  outline: none;
+  box-shadow: 0 0 6px rgba(255,102,0,0.4);
+}
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  justify-content: space-between; /* 좌우 배치 */
+  margin-top: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* 뒤로가기 버튼 */
+.button-group button[type="button"] {
+  background: #ddd;
+  color: #333;
+}
+
+.button-group button[type="button"]:hover {
+  background: #bbb;
+}
+
+/* 제출 버튼 */
+.button-group button[type="submit"] {
+  background: #ff6600;
+  color: #fff;
+}
+
+.button-group button[type="submit"]:hover {
+  background: #e05500;
 }

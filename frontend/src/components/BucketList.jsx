@@ -19,7 +19,7 @@ const BucketList = ({ buckets, deleteBucket, toggleBucket }) => {
   return (
     <div className='TodoList'>
       <h4>Todo List ☑️</h4>
-      <input value={search} onChange={onChangeSearch} type="text" placeholder='검색어 입력' />
+      <input value={search} onChange={onChangeSearch} type="text" placeholder='검색어 입력하세요!' />
       <div className="todos-wrapper">
         {filteredBuckets.map((bucket) => (<BucketItem key={bucket._id} bucket={bucket} deleteBucket={deleteBucket} toggleBucket={toggleBucket} />))}
       </div>

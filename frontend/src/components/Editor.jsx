@@ -57,7 +57,7 @@ const Editor = ({ onSubmit, initData }) => {
         <input name="category" value={input.category} onChange={handleChange} />
       </div>
       <div className="button-group">
-        <button type="button" onClick={() => nav(-1)}>{'<'}</button>
+        <button type="button" onClick={() => nav(-1)}>{'취소'}</button>
         <button type='submit'>{initData ? '수정 완료' : '추가'} </button>
       </div>
     </form>

@@ -5,6 +5,7 @@
 }
 
 .TodoList h4{
+    font-size: 25px;
     margin-bottom: 1px;
     color : #fff;
 }
@@ -18,6 +19,14 @@
   outline: none;
   background-color: #d4d0cf6d;
 }
+
+.TodoList>input::placeholder{
+      color: hsl(300, 6%, 93%);        /* 주황색 */
+    font-style: italic;    /* 기울임체 */
+    font-size: 15px; 
+}
+
+
 .TodoList>input:hover {
 background-color : #fff; /* 호버 시 색 변경 */
 }
