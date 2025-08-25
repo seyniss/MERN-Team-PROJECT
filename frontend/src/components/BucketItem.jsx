@@ -10,8 +10,9 @@ const BucketItem = ({ bucket, deleteBucket, toggleBucket }) => {
         <div>
           <Link to={`/about/${bucket._id}`} className="title">{bucket.title}</Link>
         </div>
-        <input type="checkbox" className="check" checked={bucket.isCompleted} onChange={() => toggleBucket(bucket._id, !bucket.isCompleted)} />
         <div className="btn-wrap">
+        <input type="checkbox" className="check" checked={bucket.isCompleted} onChange={() => toggleBucket(bucket._id, !bucket.isCompleted)} />
+        
           <Link to={`/edit/${bucket._id}`}>
             <button>수정</button>
           </Link>

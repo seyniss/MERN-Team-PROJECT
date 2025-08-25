@@ -42,7 +42,6 @@ const About = ({ buckets, toggleBucket, deleteBucket }) => {
 
         <div className="input-group">
           <label>이미지</label>
-          <p>{current.img}</p>
         <img src={current.img}/>
 
         </div>

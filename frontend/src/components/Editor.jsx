@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './BucketEditor.css'
 
 const Editor = ({ onSubmit, initData }) => {
   const nav = useNavigate()
@@ -49,7 +50,7 @@ const Editor = ({ onSubmit, initData }) => {
         <input name="endDate" type="date" value={input.endDate} onChange={handleChange} required />
       </div>
       <div className="input-group">
-        <label>이미지 URL (선택)</label>
+        <label>이미지</label>
         <input name="img" value={input.img} onChange={handleChange} />
         <img src={input.img}/>
       </div>
