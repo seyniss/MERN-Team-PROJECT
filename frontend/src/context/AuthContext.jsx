@@ -1,24 +1,24 @@
 import axios from "axios";
 
-export const api=axios.create({
-    baseURL:import.meta.env.VITE_API_URL,
-    withCredentials:true
+export const api = axios.create({
+    baseURL: import.meta.env.VITE_API_URL,
+    withCredentials: true
 })
 
 let isAuthing = false
 
 api.interceptors.response.use(
-    r=>r,
-    async(err)=>{
-        if(err?.response?.status===401 &&!!isAuthing){
+    r => r,
+    async (err) => {
+        if (err?.response?.status === 401 && !!isAuthing) {
             try {
-                isAuthing=true
+                isAuthing = true
                 await ensureGuestAuth()
-                isAuthing=false
+                isAuthing = false
                 return api.request(err.config)
             } catch (error) {
-                isAuthing=false
-                
+                isAuthing = false
+
             }
         }
         return Promise.reject(err)
@@ -26,13 +26,13 @@ api.interceptors.response.use(
 )
 
 export async function ensureGuestAuth() {
-    let deviceId =localStorage.getItem('deviceId')
+    let deviceId = localStorage.getItem('deviceId')
 
-    if(!deviceId){
-        deviceId=(crypto?.randomUUID && crypto.randomUUID()) ||
+    if (!deviceId) {
+        deviceId = (crypto?.randomUUID && crypto.randomUUID()) ||
             Math.random().toString(36).slice(2)
 
-        localStorage.setItem('deviceId',deviceId)
+        localStorage.setItem('deviceId', deviceId)
     }
-    await api.post('/api/auth/guest',{deviceId})
+    await api.post('/api/auth/guest', { deviceId })
 }
