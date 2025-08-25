@@ -33,7 +33,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // 기본 라우트
 app.get('/', (req, res) => {
-    res.send("Hello Express");
+    res.send("익명 MERN 팀 프로젝트(이예빈, 이승건, 이용수)");
 });
 
 // 서버 시작
