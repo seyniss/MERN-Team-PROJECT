@@ -1,20 +1,33 @@
-.App {
-  width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
+body {
+margin: 0;
+padding: 0;
+min-height: 100vh;
+position: relative;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh; 
-  background-image: url(./assets/backback.jpeg);
-  background-size: cover;      
-  background-position: center;
-  background-repeat: no-repeat;
-  backdrop-filter:blur(4px);
-  background-attachment: fixed;
+body::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url(./assets/backback.jpeg);
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+opacity: 0.9;
+filter: blur(4px);
+z-index: -1;
+}
+
+.App {
+width: 800px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+gap: 10px;
+position: relative;
+z-index: 1;
 }
