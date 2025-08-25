@@ -3,7 +3,6 @@ import Home from './pages/Home'
 import { Routes, Route } from "react-router-dom"
 import About from './pages/About'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import New from './pages/New'
 import Edit from './pages/Edit'
 import { api, ensureGuestAuth } from './context/AuthContext'
@@ -41,7 +40,7 @@ function App() {
       category: bucketData.category
     }
     try {
-      const res = await axios.post(API, payload)
+      const res = await api.post(API, payload)
       const created = res.data?.bucket ?? res.data
       if (Array.isArray(res.data?.buckets)) {
         setBuckets(res.data.buckets)
@@ -54,7 +53,7 @@ function App() {
   }
   const updateBucket = async (id, data) => {
     try {
-      const res = await axios.patch(`${API}/${id}`, data)
+      const res = await api.patch(`${API}/${id}`, data)
       const updatedBucket = res.data?.bucket ?? res.data
       setBuckets(buckets.map((item) => String(item._id) === String(id) ? updatedBucket : item))
     } catch (error) {
@@ -64,7 +63,7 @@ function App() {
   const deleteBucket = async (_id) => {
     try {
       if (window.confirm("정말 삭제하시겠습니까?")) {
-        await axios.delete(`${API}/${_id}`)
+        await api.delete(`${API}/${_id}`)
         setBuckets(buckets.filter((item) => String(item._id) !== String(_id)))
       }
     } catch (error) {
@@ -73,7 +72,7 @@ function App() {
   }
   const toggleBucket = async (_id, isCompleted) => {
     try {
-      await axios.patch(`${API}/${_id}`, { isCompleted })
+      await api.patch(`${API}/${_id}`, { isCompleted })
       setBuckets((prevBuckets) =>
         prevBuckets.map((item) =>
           String(item._id) === String(_id)
