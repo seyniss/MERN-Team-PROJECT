@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import New from './pages/New'
 import Edit from './pages/Edit'
+import { api, ensureGuestAuth } from './context/AuthContext'
 
 function App() {
   const API = `${import.meta.env.VITE_API_URL}/api/buckets`
@@ -13,7 +14,8 @@ function App() {
   useEffect(() => {
     const bucketLoad = async () => {
       try {
-        const res = await axios.get(API)
+        await ensureGuestAuth()
+        const res = await api.get(API)
         const bucket = Array.isArray(res.data) ? res.data : res.data.buckets ?? []
         setBuckets(bucket)
         console.log(bucket)

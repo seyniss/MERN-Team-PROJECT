@@ -36,6 +36,12 @@ app.get('/', (req, res) => {
     res.send("익명 MERN 팀 프로젝트(이예빈, 이승건, 이용수)");
 });
 
+app.use((err, req, res, next) => {
+    console.error("💥💥💥 서버 전체 에러 💥💥💥");
+    console.error(err.stack); // 에러의 전체 내용(스택)을 출력
+    res.status(500).send('서버에 문제가 발생했습니다!');
+});
+
 // 서버 시작
 app.listen(PORT, () => {
     console.log(`Server is Running `);
