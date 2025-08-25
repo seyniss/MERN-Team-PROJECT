@@ -1,0 +1,80 @@
+
+.Editor {
+  width: 80%;         
+  margin: 40px auto;        
+  padding: 20px;
+  background: #fff8f0;    
+  border: 2px solid #ff6600;
+  border-radius: 12px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Roboto', sans-serif;
+}   
+
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+
+.input-group p {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  color: #444;
+}
+
+
+.category-box {
+  padding: 12px;
+  border: 2px dashed #ff6600;
+  border-radius: 8px;
+  background: #fff; 
+  font-weight: bold;
+  color: #333;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+
+.button-group button[type="button"] {
+  background: #ddd;
+  color: #333;
+}
+
+.button-group button[type="button"]:hover {
+  background: #bbb;
+}
+
+
+.button-group button[type="submit"] {
+  background: #ff6600;
+  color: #fff;
+}
+
+.button-group button[type="submit"]:hover {
+  background: #e05500;
+}

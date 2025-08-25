@@ -1,0 +1,158 @@
+/* ======================= */
+/* 전체 폼 (.Editor) */
+/* ======================= */
+.Editor {
+  max-width: 600px;        
+  margin: 40px auto;       
+  padding: 20px;
+  background: #d4d0cc;      /* BucketItem 배경과 동일 */
+  border: 2px solid #fff;   
+  border-radius: 12px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* 입력 그룹 */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+  background: #fff;            /* 입력칸은 흰색 유지 */
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #00000055;      /* submit 버튼 색상과 통일 */
+  outline: none;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  justify-content: space-between; 
+  margin-top: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* 뒤로가기 버튼 */
+.button-group button[type="button"] {
+  background: #fff;                /* 수정 버튼처럼 통일 */
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.button-group button[type="button"]:hover {
+  background: #f0f0f0;
+}
+
+/* 제출 버튼 */
+.button-group button[type="submit"] {
+  background: #00000055;           /* BucketItem 삭제 버튼 색상과 통일 */
+  color: #fff;
+}
+
+.button-group button[type="submit"]:hover {
+  background: #c6c6c6;             /* BucketItem hover 색상과 통일 */
+}
+
+/* ======================= */
+/* BucketItem 리스트 */
+/* ======================= */
+.BucketItem {
+  background: #d4d0cc;              
+  border: 2px solid #fff;           
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;              
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.BucketItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.BucketItem .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.BucketItem .title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;                     
+  text-decoration: none;
+}
+
+.BucketItem .title:hover {
+  text-decoration: underline;
+}
+
+.BucketItem .check {
+  width: 20px;
+  height: 20px;
+  accent-color: #00000055;           /* submit 버튼 색상과 통일 */
+}
+
+.BucketItem .btn-wrap {
+  display: flex;
+  gap: 8px;
+}
+
+.BucketItem .btn-wrap button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.BucketItem .btn-wrap button:first-child {
+  background: #fff;                
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.BucketItem .btn-wrap button:first-child:hover {
+  background: #f0f0f0;
+}
+
+.BucketItem .btn-wrap button:last-child {
+  background: #00000055;             
+  color: #fff;
+}
+
+.BucketItem .btn-wrap button:last-child:hover {
+  background: #c6c6c6;              
+}

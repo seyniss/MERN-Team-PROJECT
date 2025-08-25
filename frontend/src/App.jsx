@@ -1,34 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Home from './pages/Home'
+import { Routes, Route } from "react-router-dom"
+import About from './pages/About'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import New from './pages/New'
+import Edit from './pages/Edit'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const API = `${import.meta.env.VITE_API_URL}/api/buckets`
+  const [buckets, setBuckets] = useState([])
+  useEffect(() => {
+    const bucketLoad = async () => {
+      try {
+        const res = await axios.get(API)
+        const bucket = Array.isArray(res.data) ? res.data : res.data.buckets ?? []
+        setBuckets(bucket)
+        console.log(bucket)
+      } catch (error) {
+        console.log("가져오기 실패", error)
+      }
+    }
+    bucketLoad()
+  }, [])
 
+  const createBucket = async (bucketData) => {
+    if (!bucketData.title?.trim() || !bucketData.text?.trim() || !bucketData.startDate || !bucketData.endDate
+    ) {
+      alert("제목, 내용, 시작일, 종료일은 필수 항목입니다.")
+      return
+    }
+    const payload = {
+      title: bucketData.title.trim(),
+      text: bucketData.text.trim(),
+      startDate: bucketData.startDate,
+      endDate: bucketData.endDate,
+      img: bucketData.img,
+      category: bucketData.category
+    }
+    try {
+      const res = await axios.post(API, payload)
+      const created = res.data?.bucket ?? res.data
+      if (Array.isArray(res.data?.buckets)) {
+        setBuckets(res.data.buckets)
+      } else {
+        setBuckets((p) => [created, ...p])
+      }
+    } catch (error) {
+      console.log("실패", error)
+    }
+  }
+  const updateBucket = async (id, data) => {
+    try {
+      const res = await axios.patch(`${API}/${id}`, data)
+      const updatedBucket = res.data?.bucket ?? res.data
+      setBuckets(buckets.map((item) => String(item._id) === String(id) ? updatedBucket : item))
+    } catch (error) {
+      console.error("업데이트 실패:", error)
+    }
+  }
+  const deleteBucket = async (_id) => {
+    try {
+      if (window.confirm("정말 삭제하시겠습니까?")) {
+        await axios.delete(`${API}/${_id}`)
+        setBuckets(buckets.filter((item) => String(item._id) !== String(_id)))
+      }
+    } catch (error) {
+      console.error("삭제 실패:", error)
+    }
+  }
+  const toggleBucket = async (_id, isCompleted) => {
+    try {
+      await axios.patch(`${API}/${_id}`, { isCompleted })
+      setBuckets((prevBuckets) =>
+        prevBuckets.map((item) =>
+          String(item._id) === String(_id)
+            ? { ...item, isCompleted: isCompleted }
+            : item
+        )
+      )
+    } catch (error) {
+      console.error("토글 실패:", error)
+    }
+  }
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='App'>
+      <Routes>
+        <Route path="/" element={<Home buckets={buckets} deleteBucket={deleteBucket} toggleBucket={toggleBucket} />} />
+        <Route path="/new" element={<New createBucket={createBucket} />} />
+        <Route path="/edit/:id" element={<Edit buckets={buckets} updateBucket={updateBucket} />} />
+        <Route path="/about/:id" element={<About buckets={buckets} toggleBucket={toggleBucket} deleteBucket={deleteBucket} />} />
+      </Routes>
+    </div>
   )
 }
 

@@ -1,0 +1,43 @@
+.TodoList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.TodoList h4{
+    font-size: 25px;
+    margin-bottom: 1px;
+    color : #fff;
+}
+
+.TodoList>input {
+    flex: 1;
+  border: 2px solid #fff;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 25px 25px; /* 왼쪽 둥글게 */
+  outline: none;
+  background-color: #d4d0cf6d;
+}
+
+.TodoList>input::placeholder{
+      color: hsl(300, 6%, 93%);        /* 주황색 */
+    font-style: italic;    /* 기울임체 */
+    font-size: 15px; 
+}
+
+
+.TodoList>input:hover {
+background-color : #fff; /* 호버 시 색 변경 */
+}
+
+.TodoList>input:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(105, 90, 205, 0.589);
+}
+
+.todos-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
