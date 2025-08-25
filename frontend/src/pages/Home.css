@@ -3,7 +3,7 @@
   margin: 20px auto;       /* 좌우 자동 → 가로 가운데 정렬 */
   width: fit-content;      /* 버튼 크기만큼만 */
   padding: 10px 20px;
-  background: #ff6600;
+  background: #00000055;
   color : white;
   border-radius: 8px;
   text-decoration: none;
@@ -11,6 +11,6 @@
 
 
 .bucket-btn:hover {
-  background: #e05500;
+  background: #c6c6c6;
   transform: translateY(-2px);
 }

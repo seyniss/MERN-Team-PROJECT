@@ -51,6 +51,7 @@ const Editor = ({ onSubmit, initData }) => {
       <div className="input-group">
         <label>이미지 URL (선택)</label>
         <input name="img" value={input.img} onChange={handleChange} />
+        <img src={input.img}/>
       </div>
       <div className="input-group">
         <label>카테고리 (선택)</label>

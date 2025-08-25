@@ -1,0 +1,81 @@
+/* 전체 폼 */
+.Editor {
+  width: 80%;         /* 가로 폭 제한 */
+  margin: 40px auto;        /* 화면 가운데 정렬 */
+  padding: 20px;
+  background: #fff8f0;      /* 연한 배경 */
+  border: 2px solid #ff6600;
+  border-radius: 12px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Roboto', sans-serif;
+}   
+
+/* 입력 그룹 */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* 👉 제목/내용 칸 구분 */
+.input-group p {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  color: #444;
+}
+
+/* 카테고리 강조 박스 */
+.category-box {
+  padding: 12px;
+  border: 2px dashed #ff6600;
+  border-radius: 8px;
+  background: #fff; /* 배경 살짝 구분 */
+  font-weight: bold;
+  color: #333;
+}
+
+/* 버튼 그룹 */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* 뒤로가기 버튼 */
+.button-group button[type="button"] {
+  background: #ddd;
+  color: #333;
+}
+
+.button-group button[type="button"]:hover {
+  background: #bbb;
+}
+
+/* 제출 버튼 */
+.button-group button[type="submit"] {
+  background: #ff6600;
+  color: #fff;
+}
+
+.button-group button[type="submit"]:hover {
+  background: #e05500;
+}
