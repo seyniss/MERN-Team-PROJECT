@@ -1,15 +1,21 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      // '/api'로 시작하는 모든 요청을 백엔드 서버(target)로 전달
-      '/api': {
-        target: env.VITE_API_URL, // 백엔드 서버 주소
-        changeOrigin: true, // cross-origin 요청을 위해 필수로 추가
+// 객체가 아닌 함수를 export 합니다.
+export default defineConfig(({ mode }) => {
+  // Vite가 전달해준 mode를 사용해 .env 파일을 로드하고 env 변수에 저장합니다.
+  const env = loadEnv(mode, process.cwd(), '');
+  
+  // 설정 객체를 반환(return)합니다.
+  return {
+    plugins: [react()],
+    server: {
+      proxy: {
+        '/api': {
+          // 여기서 env 변수를 사용합니다.
+          target: env.VITE_API_URL,
+          changeOrigin: true,
+        }
       }
     }
   }
