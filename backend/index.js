@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 app.use((err, req, res, next) => {
     console.error("💥💥💥 서버 전체 에러 💥💥💥");
-    console.error(err.stack); // 에러의 전체 내용(스택)을 출력
+    console.error(err.stack);
     res.status(500).send('서버에 문제가 발생했습니다!');
 });
 
